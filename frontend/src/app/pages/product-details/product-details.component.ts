@@ -7,40 +7,8 @@ import { CartService } from "../../services/cart.service";
 @Component({
   selector: "app-product-details",
   standalone: false,
-  template: `
-    <main class="details-page">
-      <a class="back-link" routerLink="/products">Back to products</a>
-      <p *ngIf="loading" class="details-state">Loading product details...</p>
-      <p *ngIf="errorMessage" class="details-state error">{{ errorMessage }}</p>
-
-      <section *ngIf="product" class="details-card">
-        <div class="details-image">
-          <img
-            *ngIf="product.image"
-            [src]="product.image"
-            [alt]="product.name"
-          />
-          <span *ngIf="!product.image">No image available</span>
-        </div>
-        <div class="details-copy">
-          <span class="product-category">{{ product.category }}</span>
-          <h1>{{ product.name }}</h1>
-          <p class="details-description">{{ product.description }}</p>
-          <div class="details-price">{{ product.price | currency }}</div>
-          <p class="details-stock" [class.out-of-stock]="product.stock === 0">
-            {{ product.stock ? product.stock + " available" : "Out of stock" }}
-          </p>
-          <button
-            type="button"
-            (click)="addToCart()"
-            [disabled]="product.stock === 0"
-          >
-            Add to cart
-          </button>
-        </div>
-      </section>
-    </main>
-  `,
+  templateUrl: "./product-details.component.html",
+  styleUrls: ["./product-details.component.css"],
 })
 export class ProductDetailsComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);

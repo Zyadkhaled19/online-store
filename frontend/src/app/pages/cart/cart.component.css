@@ -1,0 +1,15 @@
+.cart-item button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+@media (max-width: 640px) {
+  .store-page > section > article.cart-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .cart-item-image {
+    order: -1;
+  }
+}

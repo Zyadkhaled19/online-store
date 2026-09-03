@@ -1,0 +1,4 @@
+.product-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}

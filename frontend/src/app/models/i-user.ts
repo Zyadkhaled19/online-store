@@ -5,4 +5,5 @@ export interface IUser {
   email: string;
   password: string;
   passwordConfirm: string;
+  role: "user" | "admin";
 }
