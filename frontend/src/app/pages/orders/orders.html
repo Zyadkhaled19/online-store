@@ -1,0 +1,59 @@
+<main class="orders-page">
+  <header class="orders-header">
+    <div>
+      <span class="section-kicker">PURCHASE HISTORY</span>
+      <h1>My orders</h1>
+      <p>Keep track of your recent purchases in one place.</p>
+    </div>
+    <a routerLink="/products">Continue shopping</a>
+  </header>
+
+  <div *ngIf="loading" class="orders-state">Loading your orders...</div>
+  <div *ngIf="errorMessage" class="orders-state error">{{ errorMessage }}</div>
+  <div
+    *ngIf="!loading && !errorMessage && orders.length === 0"
+    class="orders-state"
+  >
+    You have not placed any orders yet.
+  </div>
+
+  <section *ngIf="orders.length > 0" class="orders-list">
+    <article *ngFor="let order of orders" class="order-card">
+      <div class="order-card-top">
+        <div>
+          <span class="order-label">Order ID</span>
+          <strong class="order-id">{{ order._id }}</strong>
+        </div>
+        <span
+          class="order-status"
+          [class]="'status-' + (order.status || 'Pending').toLowerCase()"
+        >
+          {{ order.status || "Pending" }}
+        </span>
+      </div>
+
+      <div class="order-details">
+        <div>
+          <span class="order-label">Total price</span>
+          <strong class="order-price">{{ order.totalPrice | currency }}</strong>
+        </div>
+        <div>
+          <span class="order-label">Shipping address</span>
+          <strong>{{ order.shippingAddress }}</strong>
+        </div>
+        <div>
+          <span class="order-label">Placed</span>
+          <strong>{{ order.createdAt | date: "mediumDate" }}</strong>
+        </div>
+      </div>
+
+      <div class="order-items" *ngIf="order.items?.length">
+        <span class="order-label">Items</span>
+        <p *ngFor="let item of order.items">
+          {{ item.productId?.name || "Product" }}
+          <span>x{{ item.quantity }}</span>
+        </p>
+      </div>
+    </article>
+  </section>
+</main>

@@ -1,0 +1,97 @@
+<form [formGroup]="registerform" (ngSubmit)="register()" novalidate>
+  <div class="form-header">
+    <h2>Create account</h2>
+    <p>Join DIGI STORE today</p>
+    <a routerLink="/login">Already have an account? Sign in</a>
+  </div>
+
+  <div class="field">
+    <label for="name">Full name</label>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      placeholder="Your name"
+    />
+    <div
+      class="error-text"
+      *ngIf="registerform.get('name')?.invalid && registerform.get('name')?.touched"
+    >
+      Name must be at least 4 characters.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="you@example.com"
+    />
+    <div
+      class="error-text"
+      *ngIf="registerform.get('email')?.invalid && registerform.get('email')?.touched"
+    >
+      Enter a valid email.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="phoneNumber">Phone number</label>
+    <input
+      id="phoneNumber"
+      type="tel"
+      formControlName="phoneNumber"
+      placeholder="+20 123 456 7890"
+    />
+    <div
+      class="error-text"
+      *ngIf="registerform.get('phoneNumber')?.invalid && registerform.get('phoneNumber')?.touched"
+    >
+      Enter a valid phone number.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      placeholder="••••••••"
+    />
+    <div
+      class="error-text"
+      *ngIf="registerform.get('password')?.invalid && registerform.get('password')?.touched"
+    >
+      Password must be at least 4 characters.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="age">Age</label>
+    <input id="age" type="number" formControlName="age" placeholder="18" />
+    <div
+      class="error-text"
+      *ngIf="registerform.get('age')?.invalid && registerform.get('age')?.touched"
+    >
+      Age must be 0 or greater.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="passwordConfirm">Confirm password</label>
+    <input
+      id="passwordConfirm"
+      type="password"
+      formControlName="passwordConfirm"
+    />
+  </div>
+
+  <div class="error-text" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <button class="submit-btn" type="submit" [disabled]="registerform.invalid">
+    Register
+  </button>
+</form>

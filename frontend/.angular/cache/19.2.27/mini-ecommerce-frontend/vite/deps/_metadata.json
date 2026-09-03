@@ -1,0 +1,70 @@
+{
+  "hash": "46a8d83c",
+  "configHash": "ebb5351c",
+  "lockfileHash": "d87d8fa9",
+  "browserHash": "8e86e13d",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "8a2e32e7",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "f5917e76",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "684b003f",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "4431397e",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "07af4db1",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "0fa31590",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "6c29bc4d",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-OE2E34WE": {
+      "file": "chunk-OE2E34WE.js"
+    },
+    "chunk-36IU63U5": {
+      "file": "chunk-36IU63U5.js"
+    },
+    "chunk-7LDQAAAV": {
+      "file": "chunk-7LDQAAAV.js"
+    },
+    "chunk-TZFPZTYJ": {
+      "file": "chunk-TZFPZTYJ.js"
+    },
+    "chunk-OSMIIYPB": {
+      "file": "chunk-OSMIIYPB.js"
+    },
+    "chunk-B66KH2Q4": {
+      "file": "chunk-B66KH2Q4.js"
+    }
+  }
+}
