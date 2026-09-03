@@ -7,6 +7,7 @@ const productRouter = require("./routes/product.route");
 const cartRouter = require("./routes/cart.route");
 const orderRouter = require("./routes/orderRoutes");
 const userRouter = require("./routes/user.route");
+const errMiddleware = require("./middleware/errMiddellware");
 
 const app = express();
 app.use(
@@ -24,10 +25,7 @@ app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/orders", orderRouter);
 app.use("/api/v1/", userRouter);
 
-app.use((err, req, res, next) => {
-  const status = err.name === "ValidationError" ? 400 : 500;
-  res.status(status).json({ message: err.message || "Internal server error" });
-});
+app.use(errMiddleware);
 
 module.exports = {
   app,
