@@ -1,49 +1,87 @@
-<main class="store-page">
-  <header>
-    <h1>Products</h1>
-    <a routerLink="/cart">View cart</a>
+<main class="store-page catalog-page">
+  <header class="catalog-heading">
+    <div>
+      <span class="eyebrow">A considered collection</span>
+      <h1>Shop the collection</h1>
+      <p class="catalog-intro">Find useful things you’ll reach for every day.</p>
+    </div>
+    <a routerLink="/cart" class="catalog-bag-link">Your bag <span aria-hidden="true">↗</span></a>
   </header>
-  <form (ngSubmit)="search()">
-    <input
-      name="searchTerm"
-      [(ngModel)]="searchTerm"
-      placeholder="Search products"
-    />
-    <button>Search</button>
+
+  <form class="catalog-filters" (ngSubmit)="search()">
+    <label class="catalog-search">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input
+        type="search"
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+        placeholder="Search products"
+        aria-label="Search products"
+      />
+    </label>
+    <label class="category-select">
+      <span class="sr-only">Filter by category</span>
+      <select name="category" [(ngModel)]="categoryFilter">
+        <option value="">All categories</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </label>
+    <button type="submit">Find products <span aria-hidden="true">→</span></button>
+    <button
+      *ngIf="searchTerm || categoryFilter"
+      type="button"
+      class="clear-filters"
+      (click)="clearFilters()"
+    >
+      Clear
+    </button>
   </form>
-  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-  <p *ngIf="loading">Loading products...</p>
-  <section class="product-grid" [class.single-result]="products.length === 1">
+
+  <div class="catalog-meta">
+    <p>{{ loading ? "Finding your next favorite..." : products.length + " items to explore" }}</p>
+    <span *ngIf="categories.length">{{ categories.length }} collections</span>
+  </div>
+  <p *ngIf="noticeMessage" class="catalog-notice" role="status">{{ noticeMessage }}</p>
+  <p *ngIf="errorMessage" class="error catalog-error" role="alert">{{ errorMessage }}</p>
+
+  <div *ngIf="loading && !products.length" class="catalog-empty">
+    <span class="loading-mark" aria-hidden="true">✳</span>
+    <p>Loading the collection…</p>
+  </div>
+  <section *ngIf="!loading && !errorMessage && !products.length" class="catalog-empty">
+    <span class="empty-mark" aria-hidden="true">⌕</span>
+    <h2>No products found</h2>
+    <p>Try another search or clear your filters to see the full collection.</p>
+    <button type="button" (click)="clearFilters()">Show all products</button>
+  </section>
+
+  <section *ngIf="products.length" class="product-grid">
     <article
       *ngFor="let product of products"
       class="product-card"
-      tabindex="0"
-      role="link"
-      (click)="openDetails(product)"
-      (keydown.enter)="openDetails(product)"
-      (keydown.space)="openDetails(product); $event.preventDefault()"
     >
-      <div class="product-image">
-        <img *ngIf="product.image" [src]="product.image" [alt]="product.name" />
-        <span *ngIf="!product.image">No image</span>
-      </div>
-      <div class="product-copy">
-        <span class="product-category">{{ product.category }}</span>
-        <h2>
-          <a [routerLink]="['/products', product._id]">{{ product.name }}</a>
-        </h2>
-        <p>{{ product.description }}</p>
-      </div>
-      <div class="product-footer">
-        <strong>{{ product.price | currency }}</strong>
-        <small>{{ product.stock }} available</small>
-      </div>
+      <a class="product-card-link" [routerLink]="['/products', product._id]" [attr.aria-label]="'View ' + product.name">
+        <div class="product-image">
+          <img *ngIf="product.image" [src]="product.image" [alt]="product.name" />
+          <span *ngIf="!product.image">Image coming soon</span>
+          <span class="product-stock-pill" *ngIf="product.stock === 0">Sold out</span>
+        </div>
+        <div class="product-copy">
+          <span class="product-category">{{ product.category }}</span>
+          <h2>{{ product.name }}</h2>
+          <p>{{ product.description }}</p>
+        </div>
+        <div class="product-footer">
+          <strong>{{ product.price | currency }}</strong>
+          <small>{{ product.stock ? "In stock" : "Unavailable" }}</small>
+        </div>
+      </a>
       <button
         type="button"
-        (click)="addToCart(product); $event.stopPropagation()"
+        (click)="addToCart(product)"
         [disabled]="product.stock === 0"
       >
-        {{ product.stock ? "Add to cart" : "Out of stock" }}
+        {{ product.stock ? "Add to bag" : "Out of stock" }}
       </button>
     </article>
   </section>

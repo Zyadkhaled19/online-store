@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   product: Product | null = null;
   loading = false;
   errorMessage = "";
+  noticeMessage = "";
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id");
@@ -37,8 +38,10 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart(): void {
     if (!this.product?._id) return;
+    this.noticeMessage = "";
+    this.errorMessage = "";
     this.cartService.add(this.product._id).subscribe({
-      next: () => window.alert(`${this.product?.name} added successfully.`),
+      next: () => (this.noticeMessage = `${this.product?.name} added to your bag.`),
       error: (error) =>
         (this.errorMessage =
           error?.error?.message || "Please log in to use the cart."),

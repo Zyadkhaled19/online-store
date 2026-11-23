@@ -1,6 +1,6 @@
 .admin-page {
   min-height: 100vh;
-  background: #f5f7fb;
+  background: var(--paper);
 }
 
 .topbar {
@@ -9,7 +9,7 @@
   align-items: center;
   gap: 24px;
   padding: 34px 6%;
-  background: #172033;
+  background: var(--green-dark);
   color: white;
 }
 
@@ -175,7 +175,7 @@ small {
 }
 
 .primary-btn {
-  background: #536dfe;
+  background: var(--green);
   color: white;
 }
 
@@ -194,8 +194,8 @@ small {
 }
 
 .edit-btn {
-  background: #eef3ff;
-  color: #3654d4;
+  background: #edf3e9;
+  color: var(--green-dark);
 }
 
 .delete-btn {
@@ -260,11 +260,15 @@ small {
 }
 
 .table-wrapper {
+  max-width: 100%;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
   width: 100%;
+  min-width: 760px;
   border-collapse: collapse;
 }
 
@@ -325,8 +329,8 @@ th {
   display: inline-block;
   padding: 5px 9px;
   border-radius: 20px;
-  background: #f0f2f6;
-  color: #4c566c;
+  background: #edf0e8;
+  color: #4c5e50;
   font-size: 12px;
   font-weight: 700;
 }

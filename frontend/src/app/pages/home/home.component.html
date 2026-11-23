@@ -1,5 +1,40 @@
-<main class="home">
-  <h1>Mini E-Commerce</h1>
-  <p>Find useful products at a glance.</p>
-  <a routerLink="/products">Browse products</a>
+<main class="home-page">
+  <section class="home-hero">
+    <div class="hero-copy">
+      <span class="hero-kicker"><span></span> A little better, every day</span>
+      <h1>Find your next<br /><em>everyday favorite.</em></h1>
+      <p>
+        A considered collection of useful things, made to bring a little more
+        joy to the everyday.
+      </p>
+      <a class="hero-cta" routerLink="/products">
+        Explore the collection <span aria-hidden="true">↗</span>
+      </a>
+      <div class="hero-note">
+        <span class="note-stars" aria-hidden="true">✳ ✳ ✳</span>
+        <span>Small discoveries.<br /><strong>Good things that last.</strong></span>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Abstract green and cream product-inspired shapes">
+      <div class="hero-shape shape-back"></div>
+      <div class="hero-shape shape-front"></div>
+      <div class="hero-orbit"></div>
+      <div class="hero-sticker"><span>CURATED</span><strong>for real<br />life</strong></div>
+    </div>
+  </section>
+
+  <section class="promise-strip" aria-label="Our shopping promise">
+    <div><span class="promise-symbol">✳</span><span><strong>Thoughtfully chosen</strong><small>Useful things, no clutter</small></span></div>
+    <div><span class="promise-symbol">↗</span><span><strong>Made for everyday</strong><small>Style meets purpose</small></span></div>
+    <div><span class="promise-symbol">♡</span><span><strong>A simpler shop</strong><small>Find what you need</small></span></div>
+  </section>
+
+  <section class="home-collection">
+    <div>
+      <span class="section-kicker">YOUR NEXT GOOD FIND</span>
+      <h2>Something worth<br />bringing home.</h2>
+    </div>
+    <p>See what’s in the store today and discover something that fits your life.</p>
+    <a routerLink="/products" class="collection-link">Shop all products <span aria-hidden="true">→</span></a>
+  </section>
 </main>

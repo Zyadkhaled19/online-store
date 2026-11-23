@@ -1,7 +1,7 @@
 <main class="details-page">
   <a class="back-link" routerLink="/products">Back to products</a>
   <p *ngIf="loading" class="details-state">Loading product details...</p>
-  <p *ngIf="errorMessage" class="details-state error">{{ errorMessage }}</p>
+  <p *ngIf="errorMessage && !product" class="details-state error">{{ errorMessage }}</p>
 
   <section *ngIf="product" class="details-card">
     <div class="details-image">
@@ -16,6 +16,8 @@
       <p class="details-stock" [class.out-of-stock]="product.stock === 0">
         {{ product.stock ? product.stock + " available" : "Out of stock" }}
       </p>
+      <p *ngIf="noticeMessage" class="details-notice" role="status">{{ noticeMessage }}</p>
+      <p *ngIf="errorMessage && product" class="error" role="alert">{{ errorMessage }}</p>
       <button
         type="button"
         (click)="addToCart()"
